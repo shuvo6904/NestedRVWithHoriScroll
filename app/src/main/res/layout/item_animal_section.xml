@@ -14,7 +14,7 @@
         android:layout_marginBottom="12dp"
         android:textAllCaps="true"
         android:textAppearance="@style/TextAppearance.TitleSection"
-        android:textColor="@color/onBackgroundSecondary"
+        android:textColor="@color/black"
         tools:text="Cats" />
 
     <androidx.recyclerview.widget.RecyclerView

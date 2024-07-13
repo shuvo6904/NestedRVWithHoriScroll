@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
     id("com.google.devtools.ksp")
     id("kotlin-kapt")
+    id("com.jakewharton.butterknife")
 }
 
 android {
@@ -43,6 +44,7 @@ android {
     buildFeatures {
         dataBinding = true
         compose = true
+        viewBinding = true
     }
     packaging {
         resources {
@@ -85,6 +87,10 @@ dependencies {
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
     implementation(libs.coil.compose)
+
+    implementation (libs.epoxy)
+    ksp(libs.epoxy.processor)
+    implementation (libs.epoxy.databinding)
 
 
 

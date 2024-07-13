@@ -15,12 +15,22 @@
         android:theme="@style/Theme.NestedRVWithHoriScroll"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.RVActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".presentation.ComposeActivity"
             android:exported="true"
             android:label="@string/title_activity_compose"
             android:theme="@style/Theme.NestedRVWithHoriScroll">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -30,6 +40,7 @@
             android:label="MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
