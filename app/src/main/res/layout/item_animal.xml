@@ -9,7 +9,7 @@
         android:id="@+id/cardView"
         style="@style/OutlinedMaterialCard"
         android:layout_width="@dimen/grid_item_width"
-        android:layout_height="@dimen/grid_item_height"
+        android:layout_height="@dimen/grid_item_width"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp">
 

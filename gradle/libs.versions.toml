@@ -3,6 +3,7 @@ agp = "8.4.0"
 butterknifeGradlePlugin = "10.2.3"
 coil = "2.6.0"
 epoxy = "5.1.4"
+paris = "2.0.2"
 foundationAndroid = "1.6.8"
 fragmentCompose = "1.8.1"
 kotlin = "2.0.0"
@@ -22,6 +23,8 @@ lifecycleRuntimeKtx = "2.8.2"
 activityCompose = "1.9.0"
 composeBom = "2024.06.00"
 ui = "1.6.8"
+ksp = "2.0.0-1.0.22"
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -38,6 +41,8 @@ coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 epoxy = { module = "com.airbnb.android:epoxy", version.ref = "epoxy" }
 epoxy-databinding = { module = "com.airbnb.android:epoxy-databinding", version.ref = "epoxy" }
 epoxy-processor = { module = "com.airbnb.android:epoxy-processor", version.ref = "epoxy" }
+paris = { module = "com.airbnb.android:paris", version.ref = "paris" }
+paris-processor = { module = "com.airbnb.android:paris-processor", version.ref = "paris" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -62,3 +67,4 @@ ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+google-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

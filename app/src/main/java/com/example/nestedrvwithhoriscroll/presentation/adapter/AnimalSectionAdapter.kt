@@ -30,7 +30,7 @@ class AnimalSectionAdapter(
         //save horizontal scroll state
         val key = getSectionID(holder.layoutPosition)
         scrollStates[key] =
-            holder.itemView.findViewById<RecyclerView>(R.id.titledSectionRecycler).layoutManager?.onSaveInstanceState()
+            holder.itemView.findViewById<RecyclerView>(R.id.sectionRV).layoutManager?.onSaveInstanceState()
     }
 
     override fun bind(
@@ -39,13 +39,13 @@ class AnimalSectionAdapter(
         position: Int,
         viewHolder: BaseViewHolderImp
     ) {
-        itemView.findViewById<TextView>(R.id.sectionTitleTextView)?.text = item.title
+        itemView.findViewById<TextView>(R.id.sectionTitle)?.text = item.title
         val layoutManager =
             LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL, false)
 
         layoutManager.initialPrefetchItemCount = 4
 
-        val titledSectionRecycler = itemView.findViewById<RecyclerView>(R.id.titledSectionRecycler)
+        val titledSectionRecycler = itemView.findViewById<RecyclerView>(R.id.sectionRV)
         titledSectionRecycler?.run {
             this.setRecycledViewPool(viewPool)
             this.layoutManager = layoutManager

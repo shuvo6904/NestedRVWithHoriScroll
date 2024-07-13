@@ -2,9 +2,9 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.compose.compiler)
-    id("com.google.devtools.ksp")
+    alias(libs.plugins.google.ksp)
     id("kotlin-kapt")
-    id("com.jakewharton.butterknife")
+//    id("com.jakewharton.butterknife")
 }
 
 android {
@@ -53,6 +53,12 @@ android {
     }
 }
 
+ksp {
+    arg("allowSourceFromOtherPlugins", "true")
+    arg("logEpoxyTimings", "true")
+    arg("validateEpoxyModelUsage", "true")
+}
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -90,7 +96,10 @@ dependencies {
 
     implementation (libs.epoxy)
     ksp(libs.epoxy.processor)
-    implementation (libs.epoxy.databinding)
+
+    implementation(libs.paris)
+    ksp(libs.paris.processor)
+//    implementation (libs.epoxy.databinding)
 
 
 

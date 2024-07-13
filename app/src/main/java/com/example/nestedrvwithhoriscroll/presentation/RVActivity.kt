@@ -9,6 +9,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.nestedrvwithhoriscroll.R
 import com.example.nestedrvwithhoriscroll.data.DataSource
 import com.example.nestedrvwithhoriscroll.databinding.ActivityRvactivityBinding
+import com.example.nestedrvwithhoriscroll.presentation.epoxy.sectionView
 
 class RVActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRvactivityBinding
@@ -25,11 +26,19 @@ class RVActivity : AppCompatActivity() {
 
         binding.epoxyRecyclerView.withModels {
             val sections = DataSource.createSections(numberOfSections = 50, itemsPerSection = 25)
-            sections.fastForEachIndexed { index, animalSection ->
-                content{
-
+            sections.fastForEachIndexed { index, section ->
+                sectionView{
+                    id(index)
+                    animalSection(section)
                 }
             }
+//            sections.first().animals.fastForEachIndexed { animalIndex, animal ->
+//                animalView{
+//                    id(animalIndex)
+//                    title(animal.name)
+//                    image(animal.image)
+//                }
+//            }
         }
     }
 }
