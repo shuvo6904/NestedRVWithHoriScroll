@@ -16,7 +16,7 @@ import com.airbnb.paris.extensions.layoutHeight
 import com.airbnb.paris.extensions.layoutWidth
 
 @Styleable
-@ModelView(autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT)
+@ModelView
 class AnimalView (context: Context): FrameLayout(context) {
 
     private val binding = ItemAnimalBinding.inflate(LayoutInflater.from(context), this, true)

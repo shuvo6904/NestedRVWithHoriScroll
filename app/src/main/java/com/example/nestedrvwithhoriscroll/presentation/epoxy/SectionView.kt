@@ -16,7 +16,7 @@ import com.example.nestedrvwithhoriscroll.data.domain.AnimalSection
 import com.example.nestedrvwithhoriscroll.databinding.ItemAnimalSectionBinding
 
 @Styleable
-@ModelView(autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT)
+@ModelView
 class SectionView(context: Context): FrameLayout(context) {
 
     private val binding = ItemAnimalSectionBinding.inflate(LayoutInflater.from(context), this, true)
