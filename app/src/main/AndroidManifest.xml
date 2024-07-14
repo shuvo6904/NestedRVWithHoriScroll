@@ -16,32 +16,20 @@
         tools:targetApi="31">
         <activity
             android:name=".presentation.RVActivity"
-            android:exported="true"
-            android:label="EpoxyActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:label="EpoxyActivity" />
         <activity
             android:name=".presentation.ComposeActivity"
-            android:exported="true"
             android:label="@string/title_activity_compose"
-            android:theme="@style/Theme.NestedRVWithHoriScroll">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/Theme.NestedRVWithHoriScroll" />
         <activity
             android:name=".presentation.MainActivity"
+            android:label="MainActivity" />
+        <activity
+            android:name="com.example.nestedrvwithhoriscroll.presentation.StartActivity"
             android:exported="true"
-            android:label="MainActivity">
+            android:label="StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

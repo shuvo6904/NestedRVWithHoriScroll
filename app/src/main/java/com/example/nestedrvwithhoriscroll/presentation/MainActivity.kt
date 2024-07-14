@@ -2,6 +2,7 @@ package com.example.nestedrvwithhoriscroll.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,12 +14,14 @@ import com.example.nestedrvwithhoriscroll.presentation.adapter.AnimalSectionAdap
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var sectionAdapter: AnimalSectionAdapter
-    private var sections: List<AnimalSection>? = null
+    private var sections = MutableStateFlow<List<AnimalSection>?>(null)
 
     companion object {
         const val sectionsKey = "sectionsKey"
@@ -44,33 +47,39 @@ class MainActivity : AppCompatActivity() {
         //restore state if possible
         //IRL this would most likely be persisted inside a viewModel and you wouldn't need to worry about it
         val savedSections = savedInstanceState?.getString(sectionsKey)
-        if (sections == null && savedSections != null) {
-            sections = animalSectionJsonAdapter.fromJson(savedSections)
+        if (sections.value == null && savedSections != null) {
+            sections.value = animalSectionJsonAdapter.fromJson(savedSections)
         }
 
-        if (sections == null) {
+        if (sections.value == null) {
             //create a populated list of sections
             //IRL you'd most likely be getting the data from a server on a background thread inside a viewModel
-            sections = DataSource.createSections(numberOfSections = 50, itemsPerSection = 25)
-        }
+            lifecycleScope.launch {
+                sections.value = DataSource.createSections(numberOfSections = 20, itemsPerSection = 10)
+            }}
         //create an instance of ConcatAdapter
         val concatAdapter = ConcatAdapter()
 
         //create AnimalSectionAdapter for the sections and add to ConcatAdapter
-        sectionAdapter = AnimalSectionAdapter(sections ?: mutableListOf())
-        concatAdapter.addAdapter(sectionAdapter)
+        lifecycleScope.launch {
+            sections.collect { sections ->
+                sectionAdapter = AnimalSectionAdapter(sections ?: mutableListOf())
+                concatAdapter.addAdapter(sectionAdapter)
 
-        //setup the recycler
-        val linearLayoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        binding.recyclerView.run {
-            layoutManager = linearLayoutManager
-            adapter = concatAdapter
-            enforceSingleScrollDirection()
+                //setup the recycler
+                val linearLayoutManager = LinearLayoutManager(this@MainActivity, RecyclerView.VERTICAL, false)
+                binding.recyclerView.run {
+                    layoutManager = linearLayoutManager
+                    adapter = concatAdapter
+                    enforceSingleScrollDirection()
+                }
+            }
         }
+
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        outState.putString(sectionsKey, animalSectionJsonAdapter.toJson(sections))
+        outState.putString(sectionsKey, animalSectionJsonAdapter.toJson(sections.value))
         super.onSaveInstanceState(outState)
     }
 }

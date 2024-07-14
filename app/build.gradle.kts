@@ -51,6 +51,9 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.1"
+    }
 }
 
 ksp {
@@ -99,6 +102,10 @@ dependencies {
 
     implementation(libs.paris)
     ksp(libs.paris.processor)
+
+    // image carousel
+    implementation (libs.circleindicator)
+    implementation (libs.whynotimagecarousel)
 //    implementation (libs.epoxy.databinding)
 
 

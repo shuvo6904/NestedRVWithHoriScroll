@@ -2,4 +2,5 @@
     <string name="app_name">NestedRecyclerSample</string>
     <string name="title_activity_compose">ComposeActivity</string>
     <string name="image">Image</string>
+    <string name="title_activity_start">StartActivity</string>
 </resources>

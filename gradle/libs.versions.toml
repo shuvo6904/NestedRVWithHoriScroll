@@ -1,6 +1,7 @@
 [versions]
 agp = "8.4.0"
 butterknifeGradlePlugin = "10.2.3"
+circleindicator = "2.1.6"
 coil = "2.6.0"
 epoxy = "5.1.4"
 paris = "2.0.2"
@@ -24,6 +25,7 @@ activityCompose = "1.9.0"
 composeBom = "2024.06.00"
 ui = "1.6.8"
 ksp = "2.0.0-1.0.22"
+whynotimagecarousel = "2.1.0"
 
 
 [libraries]
@@ -36,6 +38,7 @@ androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-
 androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
 androidx-recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "recyclerview" }
 butterknife-gradle-plugin = { module = "com.jakewharton:butterknife-gradle-plugin", version.ref = "butterknifeGradlePlugin" }
+circleindicator = { module = "me.relex:circleindicator", version.ref = "circleindicator" }
 coil = { module = "io.coil-kt:coil", version.ref = "coil" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 epoxy = { module = "com.airbnb.android:epoxy", version.ref = "epoxy" }
@@ -62,6 +65,7 @@ ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
 ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+whynotimagecarousel = { module = "org.imaginativeworld.whynotimagecarousel:whynotimagecarousel", version.ref = "whynotimagecarousel" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -18,9 +18,11 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -51,13 +53,15 @@ class ComposeActivity : ComponentActivity() {
 
 @Composable
 fun MainScreen(modifier: Modifier = Modifier) {
-    val sections by remember {
-        mutableStateOf(
-            DataSource.createSections(numberOfSections = 50, itemsPerSection = 25).toList()
-        )
+    var sections by remember { mutableStateOf(listOf<AnimalSection>()) }
+
+    LaunchedEffect(Unit) {
+        sections= DataSource.createSections(numberOfSections = 20, itemsPerSection = 10).toList()
     }
 
-    LazyColumn(modifier = modifier.fillMaxSize().padding(horizontal = 10.dp)) {
+    LazyColumn(modifier = modifier
+        .fillMaxSize()
+        .padding(horizontal = 10.dp)) {
         items(sections.size, key = { sections[it].id + it }) {ind->
             val aniSec = sections[ind]
             SectionItem(aniSec)
@@ -88,7 +92,7 @@ private fun AnimalItem(animal: Animal) {
         modifier = Modifier
             .clip(RoundedCornerShape(10.dp))
             .background(Color.Gray)
-            .clickable {  }
+            .clickable { }
             .padding(1.dp)
             .clip(RoundedCornerShape(10.dp))
     ) {

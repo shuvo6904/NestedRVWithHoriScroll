@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+        android:id="@+id/carousel"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        app:autoPlay="true"
+        app:autoPlayDelay="4000"
+        app:infiniteCarousel="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:showBottomShadow="false"
+        app:showCaption="false"
+        app:showIndicator="false"
+        app:showNavigationButtons="false"
+        app:showTopShadow="false" />
+
+    <me.relex.circleindicator.CircleIndicator2
+        android:id="@+id/custom_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="12dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/background_slider_indicator"
+        android:paddingHorizontal="8dp"
+        app:ci_animator="@animator/scale_with_alpha"
+        app:ci_drawable="@drawable/dot"
+        app:ci_drawable_unselected="@drawable/dot"
+        app:ci_height="4dp"
+        app:ci_width="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/carousel"
+        app:layout_constraintEnd_toEndOf="@+id/carousel"
+        app:layout_constraintStart_toStartOf="@+id/carousel" />
+</androidx.constraintlayout.widget.ConstraintLayout>

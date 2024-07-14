@@ -2,6 +2,8 @@ package com.example.nestedrvwithhoriscroll.data
 
 import com.example.nestedrvwithhoriscroll.data.domain.Animal
 import com.example.nestedrvwithhoriscroll.data.domain.AnimalSection
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 object DataSource {
 
@@ -91,20 +93,21 @@ object DataSource {
      * [numberOfSections] the size of returned list of Sections
      * [itemsPerSection] the number of items inside each section
      */
-    fun createSections(numberOfSections: Int, itemsPerSection: Int): MutableList<AnimalSection> {
-        val sections = mutableListOf<AnimalSection>()
+    suspend fun createSections(numberOfSections: Int, itemsPerSection: Int): MutableList<AnimalSection> {
+        return withContext(Dispatchers.Default) {
+            val sections = mutableListOf<AnimalSection>()
 
-        for (i in 0 until numberOfSections) {
-            val animals = mutableListOf<Animal>()
-            val title = titles.random()
-            val section = AnimalSection(title = title, animals = animals)
-            for (j in 0 until itemsPerSection) {
-                animals.add(titlesToAnimals[title]!!.random())
+            for (i in 0 until numberOfSections) {
+                val animals = mutableListOf<Animal>()
+                val title = titles.random()
+                val section = AnimalSection(title = title, animals = animals)
+                for (j in 0 until itemsPerSection) {
+                    animals.add(titlesToAnimals[title]!!.random())
+                }
+                sections.add(section)
             }
-            sections.add(section)
+             sections
         }
-
-        return sections
     }
 
 }
